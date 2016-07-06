@@ -1,0 +1,41 @@
+[user]
+	name = keunchan.park
+	email = keunchan.park@navercorp.com
+[alias]
+	ls = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) - %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	ll = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+	st = status
+	br = branch
+	co = checkout
+	ci = commit
+	mg = merge
+	mt = mergetool
+	rb = rebase
+	rs = reset
+	df = diff
+	dt = difftool
+	cl = clone
+	ps = push
+	pl = pull
+	sh = stash
+[color]
+	ui = true
+[format]
+	pretty = oneline
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+	trustExitCode = true
+[merge]
+	tool = vimdiff
+[mergetool]
+	prompt = false
+[push]
+	default = simple
+[core]
+	excludesfile = ~/.gitignore_global
+[http]
+	sslVerify = false
+[credential]
+	helper = cache --timeout=2592000

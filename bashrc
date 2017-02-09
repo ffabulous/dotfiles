@@ -38,9 +38,10 @@ alias	vi="vim -i ${HOME}/.viminfo"
 alias	grep="grep --color=always"
 alias	sort="LC_ALL=C sort -T . -S 2G"
 alias	java="java -Xmx2048M"
+alias	awk="awk -v OFS='\t'"
 # tmux
 alias	tsl-="tmux select-layout even-vertical"
-alias	tslI="tmux select-layout even-horizontal"
+alias	tsli="tmux select-layout even-horizontal"
 alias	tslt="tmux select-layout tiled"
 
 

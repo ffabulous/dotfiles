@@ -8,16 +8,11 @@
 	br = branch
 	co = checkout
 	ci = commit
-	mg = merge
 	mt = mergetool
 	rb = rebase
-	rs = reset
-	df = diff
 	dt = difftool
 	cl = clone
-	ps = push
 	pl = pull
-	sh = stash
 [color]
 	ui = true
 [format]

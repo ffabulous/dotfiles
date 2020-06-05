@@ -9,27 +9,37 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " plugins {{{
-Plugin 'gmarik/Vundle.vim'
-Plugin 'The-NERD-tree'
-Plugin 'The-NERD-Commenter'
-Plugin 'molokai'
-Plugin 'snipMate'
-Plugin 'Tagbar'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'mattn/emmet-vim'
-Plugin 'Lokaltog/vim-powerline'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'majutsushi/tagbar'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'luochen1990/rainbow'
-Plugin 'elzr/vim-json'
-Plugin 'pangloss/vim-javascript'
-Plugin 'autowitch/hive.vim'
 Plugin 'ciaranm/detectindent'
+Plugin 'mattn/emmet-vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'    " snipmate
+Plugin 'tomtom/tlib_vim'                 " snipmate
+Plugin 'honza/vim-snippets'              " snipmate
+Plugin 'garbas/vim-snipmate'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+Plugin 'elzr/vim-json'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'autowitch/hive.vim'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'pangloss/vim-javascript'
+Plugin 'tomasr/molokai'
+Plugin 'dag/vim-fish'
+Plugin 'junegunn/goyo.vim'
+Plugin 'stephpy/vim-yaml'
 " }}}
 call vundle#end()
 
 filetype plugin indent on
 
 " Tagbar
-let g:tagbar_sort = 0
+let g:tagbar_sort=0
 
 " NERD-tree
 let g:NERDTreeDirArrows=0
@@ -41,33 +51,33 @@ let NERDSpaceDelims=1
 " emmet-vim
 " Ctrl y,
 let g:user_emmet_install_global=0
-autocmd FileType html,javascript,css EmmetInstall
-
-" molokai
-colorscheme molokai
-let g:molokai_original=1
-set t_ut=
+autocmd FileType html,xml,javascript,css EmmetInstall
 
 " vim-markdown
 let g:vim_markdown_folding_disabled=1
 
-" vim-powerline
-set laststatus=2
-let g:Powerline_symbols='compatible'
-let g:Powerline_mode_V='V-LINE'
-let g:Powerline_mode_cv='V|BLOCK'
-"let g:Powerline_colorscheme='solarized256'
+" vim-airline
+let g:airline_powerline_fonts=1
+let g:airline_theme='minimalist'
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#tab_min_count=2
+let g:airline#extensions#tabline#show_buffers=0
+" let g:airline#extensions#tabline#show_splits=0
 
 " snipMate
 inoremap <C-J> <C-R>=TriggerSnippet()<CR>
 snoremap <C-J> <ESC>i<RIGHT><C-R>=TriggerSnippet()<CR>
 
+" gitgutter
+" let g:gitgutter_override_sign_column_highlight=0
+set updatetime=500
+
 " hive.vim
 au BufNewFile,BufRead *.hql set filetype=hive expandtab
 
 " rainbow_parentheses.vim
-let g:rainbow_active = 1
-let g:rainbow_conf = {
+let g:rainbow_active=1
+let g:rainbow_conf={
 \	'ctermfgs': ['38', '175', '41', '136']
 \}
 
@@ -79,17 +89,17 @@ autocmd BufReadPost * :DetectIndent
 " mappings
 " ==============================================================================
 map ,tb :TagbarToggle<CR>
-map ,nt <Esc>:NERDTreeToggle<CR>
-nmap ,nb :set number! <CR>
-nmap ,wr :set wrap! <CR>
-nmap ,ls :set list! <CR>
-nmap ,ps :set paste! <CR>
-nmap ,hs :set hlsearch! <CR>
-nmap ,ic :set ignorecase! <CR>
-nmap ,ac :set autochdir <CR>
-nmap ,sv :source $MYVIMRC <CR>
-nmap ,wi :wviminfo! <CR>
-nmap ,ri :rviminfo! <CR>
+map ,nt :NERDTreeToggle<CR>
+nmap ,nb :set number!<CR>
+nmap ,wr :set wrap!<CR>
+nmap ,ls :set list!<CR>
+nmap ,ps :set paste!<CR>
+nmap ,hs :set hlsearch!<CR>
+nmap ,ic :set ignorecase!<CR>
+nmap ,ac :set autochdir<CR>
+nmap ,wi :wviminfo!<CR>
+nmap ,ri :rviminfo!<CR>
+nmap ,tw :set tw=0<CR>
 
 
 " ==============================================================================
@@ -112,7 +122,7 @@ set expandtab
 autocmd Filetype javascript,html,css setlocal ts=2 sw=2 sts=2
 
 " textwidth
-set textwidth=80
+set textwidth=0    " 78
 
 " indent
 "set autoindent
@@ -130,6 +140,7 @@ set ruler
 
 " cursorline
 set cursorline
+"set cursorcolumn
 
 " wrap, margin
 set nowrap
@@ -144,7 +155,7 @@ set wildmode=longest:full,full
 " mouse
 "set mouse=a
 
-" command 
+" command
 "set showcmd
 
 " speller
@@ -168,3 +179,11 @@ let g:xml_syntax_folding=1
 
 " max tabs
 set tabpagemax=100
+
+" viminfo
+set viminfo=
+
+" colorscheme
+set t_ut=
+let g:rehash256=1
+colorscheme molokai

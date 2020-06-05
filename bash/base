@@ -12,7 +12,7 @@ export	HISTSIZE=1000
 # ==============================================================================
 # path
 # ==============================================================================
-export	PATH=/usr/local/bin:${PATH}
+export	PATH=/usr/local/bin:${HOME}/bin:/naver/bin:${PATH}
 export	LD_LIBRARY_PATH=${LD_LIBRARY_PATH}
 export	CLASSPATH=${CLASSPATH}
 export	PYTHONPATH=${PYTHONPATH}
@@ -21,7 +21,10 @@ export	PYTHONPATH=${PYTHONPATH}
 # ==============================================================================
 # prompt
 # ==============================================================================
-export	PS1="\[\033[32m\]\u@\H \[\033[01;34m\]\W\[\033[00m\] \$ "
+function swd() {
+    echo -n $(dirs | perl -F/ -ane 'print join("/", map{$i++ < @F-1? substr $_,0,1: $_} @F)')
+}
+export	PS1="\[\033[32m\]\u@\H \[\033[01;34m\]\$(swd)\[\033[00m\] \$ "
 
 
 # ==============================================================================
@@ -34,22 +37,24 @@ set -o vi
 # alias
 # ==============================================================================
 alias	ll="ls -lh"
-alias	vi="vim -i ${HOME}/.viminfo"
 alias	grep="grep --color=always"
 alias	sort="LC_ALL=C sort -T . -S 2G"
 alias	java="java -Xmx2048M"
 alias	awk="awk -v OFS='\t'"
+alias	vi="vim -u ${HOME}/.vimrc -i ${HOME}/.viminfo"
+alias	vimdiff="vimdiff -u ${HOME}/.vimrc"
 # tmux
+alias   tmux="tmux -L kcpark"
 alias	tsl-="tmux select-layout even-vertical"
 alias	tsli="tmux select-layout even-horizontal"
 alias	tslt="tmux select-layout tiled"
 
 
 # ==============================================================================
-# Linux
+# Linux (default)
 # ==============================================================================
 export	LS_COLORS="no=00:fi=00:di=38;5;27:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;92:*.cmd=00;92:*.exe=00;92:*.com=00;92:*.btm=00;92:*.bat=00;92:*.sh=00;92:*.csh=00;92:*.jar=00;91:*.tar=00;91:*.tgz=00;91:*.arj=00;91:*.taz=00;91:*.lzh=00;91:*.zip=00;91:*.z=00;91:*.Z=00;91:*.gz=00;91:*.bz2=00;91:*.bz=00;91:*.tz=00;91:*.rpm=00;91:*.cpio=00;91:*.jpg=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.png=00;35:*.tif=00;35:*.h=00;93:*.c=00;93:*.cpp=00;93:*.java=00;93"
-#alias	ls="ls -p --color=auto"
+alias	ls="ls -p --color=auto"
 
 
 # ==============================================================================
@@ -57,4 +62,5 @@ export	LS_COLORS="no=00:fi=00:di=38;5;27:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:
 # ==============================================================================
 export	CLICOLOR=1
 export	LSCOLORS=exfxcxdxbxegedabagacad
-alias	ls="ls -Gp"
+#export	PATH=${PATH}:/Library/TeX/texbin
+#alias	ls="ls -Gp"

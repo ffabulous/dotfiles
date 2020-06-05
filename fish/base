@@ -1,0 +1,61 @@
+# ==============================================================================
+# env
+# ==============================================================================
+set -x LANG ko_KR.UTF-8
+set -x LC_COLLATE C
+set -x TERM xterm-256color
+set -x TMOUT
+set -x EDITOR vim
+set -x HISTSIZE 1000
+
+
+# ==============================================================================
+# path
+# ==============================================================================
+set -x PATH /usr/local/bin /usr/local/sbin $HOME/bin (string split $PATH :)
+set -x LD_LIBRARY_PATH (string split $LD_LIBRARY_PATH :)
+set -x CLASSPATH (string split $CLASSPATH :)
+set -x PYTHONPATH (string split $PYTHONPATH :)
+
+
+# ==============================================================================
+# vi mode
+# ==============================================================================
+fish_vi_key_bindings
+function fish_user_key_bindings
+    for mode in insert default visual
+        bind -M $mode \cf forward-char
+    end
+end
+
+
+# ==============================================================================
+# alias
+# ==============================================================================
+alias ll      "ls -lh"
+alias grep    "grep --color=always"
+alias sort    "sort -T . -S 2G"
+alias java    "java -Xmx2048M"
+alias awk     "awk -v OFS='\t'"
+alias vi      "vim -u $HOME/.vimrc -i $HOME/.viminfo"
+alias vimdiff "vimdiff -u $HOME/.vimrc"
+alias tmux    "tmux -L kcpark"
+alias tsl-    "tmux select-layout even-vertical"
+alias tsli    "tmux select-layout even-horizontal"
+alias tslt    "tmux select-layout tiled"
+
+
+# ==============================================================================
+# bobthefish
+# ==============================================================================
+set -g theme_color_scheme default
+set -g theme_display_vi yes
+set -g theme_display_user yes
+set -g theme_display_hostname yes
+set -g theme_display_cmd_duration yes
+set -g theme_display_date yes
+set -g theme_date_format "+%Y-%m-%d %H:%M:%S"
+set -g theme_newline_cursor yes
+set -g theme_newline_prompt '$ '
+set -g theme_project_dir_length 1
+set -g theme_nerd_fonts yes

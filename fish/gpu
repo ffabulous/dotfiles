@@ -1,0 +1,21 @@
+set -x HOME $HOME/kcpark
+if test -f $HOME/dotfiles/fish/base
+    . $HOME/dotfiles/fish/base
+end
+
+set -x CONDA_DIR $HOME/anaconda3
+if test -f $CONDA_DIR/etc/fish/conf.d/conda.fish
+    . $CONDA_DIR/etc/fish/conf.d/conda.fish
+end
+
+set -x CUDA_HOME /usr/local/cuda
+set -x PATH $CONDA_DIR/bin $CUDA_HOME/bin $HOME/bin $PATH
+set -x LD_LIBRARY_PATH $CUDA_HOME/lib $CUDA_HOME/lib64
+set -x HADOOP_USER_NAME kcpark
+
+alias hls  "hdfs dfs -ls"
+alias hdu  "hdfs dfs -du"
+alias hcat "hdfs dfs -cat"
+alias hget "hdfs dfs -get"
+alias hput "hdfs dfs -put"
+alias hrm  "hdfs dfs -rm -r -f"

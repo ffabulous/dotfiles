@@ -1,0 +1,22 @@
+HOME=${HOME}/kcpark
+
+unset	PROMPT_COMMAND
+if [ -f ${HOME}/dotfiles/bashrc/base ]; then
+	. ${HOME}/dotfiles/bashrc/base
+fi
+
+export	CONDA_DIR=${HOME}/anaconda3
+export	CUDA_HOME=/usr/local/cuda
+# export	CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+
+export	PATH=${CONDA_DIR}/bin:${CUDA_HOME}/bin:${PATH}:${HOME}/bin
+export	LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${CUDA_HOME}/lib
+
+export	HADOOP_USER_NAME=kcpark
+
+alias	hls="hdfs dfs -ls"
+alias	hdu="hdfs dfs -du"
+alias	hcat="hdfs dfs -cat"
+alias	hget="hdfs dfs -get"
+alias	hput="hdfs dfs -put"
+alias	hrm="hdfs dfs -rm -r -f"
